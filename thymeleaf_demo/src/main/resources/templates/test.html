@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试1</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <script type="text/javascript" src="/js/test2.js" th:src="@{/js/test2.js}"></script>
+
+    <script>
+        welcome();
+    </script>
+
+</head>
+<body>
+
+    <div class="showing">
+        <h2>显示book及其属性</h2>
+        <p th:text="${book}"></p>
+        <p th:text="${book.id}"></p>
+        <p th:text="${book.name}"></p>
+        <p th:text="${book.price}"></p>
+    </div>
+
+    <div class="showing">
+        <h2>测试book的get方法</h2>
+        <p th:text="${book.getId()}"></p>
+        <p th:text="${book.getName()}"></p>
+        <p th:text="${book.getPrice()}"></p>
+    </div>
+
+    <div class="showing" th:object="${book}">
+        <h2>测试*{}方法显示属性</h2>
+        <p th:text="*{id}"></p>
+        <p th:text="*{name}"></p>
+        <p th:text="*{price}"></p>
+    </div>
+
+    <div class="showing">
+        <h2>测试简单表达式</h2>
+        <p th:text="${book.price*100}"></p>
+        <p th:text="${book.price+100}"></p>
+    </div>
+
+    <div class="showing">
+        <h2>测试转义和非转义文本</h2>
+        <p th:text="${htmlContent}"></p>
+        <p th:utext="${htmlContent}"></p>
+    </div>
+
+    <div class="showing">
+        <h2>测试if</h2>
+        <p th:if="${testBoolean}">如果testBoolean 是 true ，本句话就会显示</p>
+        <p th:if="${not testBoolean}">取反 ，所以如果testBoolean 是 true ，本句话就不会显示</p>
+        <p th:unless="${testBoolean}">unless 等同于上一句，所以如果testBoolean 是 true ，本句话就不会显示</p>
+        <p th:text="${testBoolean}? '当testBoolean为真的时候，显示本句话，这是用三相表达式做的':''"></p>
+    </div>
+
+</body>
+</html>

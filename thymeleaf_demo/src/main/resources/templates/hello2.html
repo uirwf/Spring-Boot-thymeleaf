@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf测试2</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <script type="text/javascript" src="/js/test.js" th:src="@{/js/test.js}"></script>
+    <script>
+        test();
+    </script>
+</head>
+<body>
+<div class="showing">
+
+    <p th:text="${name}" >name</p>
+    <p th:text="'Hello！ ' + ${name} + '!'" >hello world</p>
+
+
+</div>
+</body>
+</html>

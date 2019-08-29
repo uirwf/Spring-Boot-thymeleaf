@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试2</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" th:href="@{/css/style.css}">
+    <script type="text/javascript" src="/js/test2.js" th:src="@{/js/test2.js}"></script>
+</head>
+<body>
+
+    <div class="showing">
+        <h2>测试普通遍历</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>产品名称</th>
+                    <th>产品价格</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="pro:${productList}">
+                    <td th:text="${pro.id}"></td>
+                    <td th:text="${pro.name}"></td>
+                    <td th:text="${pro.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="showing">
+        <h2>测试带状态遍历</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>index</th>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>产品价格</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="pro,status:${productList}" th:class="${status.even}?'even':'odd'">
+                <td th:text="${status.count}"></td>
+                <td th:text="${pro.id}"></td>
+                <td th:text="${pro.name}"></td>
+                <td th:text="${pro.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="showing">
+        <h2>遍历select下拉框</h2>
+        <select size="4">
+            <option th:each="pro:${productList}" th:value="${pro.id}" th:text="${pro.name}" th:selected="${pro.id==book.id}"></option>
+        </select>
+    </div>
+
+    <div class="showing">
+        <h2>遍历radio</h2>
+        <input name="product" type="radio" th:each="pro:${productList}" th:value="${pro.id}" th:text="${pro.name}" th:checked="${pro.id==book.id}">
+    </div>
+
+</body>
+</html>
